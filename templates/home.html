@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>TTTgame</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center;">Hi! Welcome to tttgame!</h1>
+
+    <div style="text-align: center;" style="font-size: 30px;">
+        <br>
+        <br>
+        <p>Choose your symbol:</p>
+        <br>
+        <br>
+
+        <div class="form">
+            <form method="POST">
+                <input type="submit" name="submit_a" value="cross">
+                <input type="submit" name="submit_b" value="circle">
+            </form>
+        </div>
+        <br>
+        <br>
+        <a href="/stats">Check Stats</a>
+        <br>
+        <br>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    
+    
+</div>
+{% endblock %}

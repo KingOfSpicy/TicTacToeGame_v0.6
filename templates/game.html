@@ -2,6 +2,11 @@
 
 {% block head %}
 <title>TTTgame</title>
+<!--<style>
+    #image{
+        display: none;
+    }
+</style>-->
 {% endblock %}
 
 {% block body %}
@@ -10,17 +15,12 @@
     <h1 style="text-align: center;">lets match</h1>
 
     <div>
-
     <table class="center" style="margin-left: auto;margin-right: auto; border: 1px solid black; border-collapse: collapse; width: 30%; height: 200px;">
         
         <tr>
           <th style="border: 1px solid black">
-            <form method="POST">
-                <input type="submit" name="decide" value="circle">
-            {%if (method == "POST")%}
-            <img src="{{url_for('static', filename= 'Cross.png')}}" height=50 width=50></img>
-            {%endif%}
-            </form>
+            <img id="ccl" src="">
+            <button type = "button" onclick ="show()" id="A1">click</button>
             
         </th>
           <th style="border: 1px solid black"><img src="{{url_for('static', filename= 'Cross.png')}}" height=50 width=50></img></th>
@@ -37,7 +37,16 @@
           <td style="border: 1px solid black"><img src="{{url_for('static', filename= 'Cross.png')}}" height=50 width=50></img></td>
         </tr>
     </table>
-
+    <script>
+        function show(){
+            let image = document.getElementById("ccl");
+            ccl.src = "{{url_for('static', filename= 'Circle.png')}}"
+            ccl.width = 50
+            ccl.height = 50
+            
+            document.getElementById('A1').style.display = "none";
+        }
+    </script>
     </div>
 
 

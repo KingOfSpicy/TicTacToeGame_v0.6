@@ -8,27 +8,50 @@
 
 <div class="content">
     <h1 style="text-align: center;">lets match</h1>
-
     
     <table class="center">
         <!-- img id coc stands "circle or cross"-->
         <tr>
           <th>
-            <img id="coc" src="">
+            <img id="A1A1" src="">
             <button type = "button" onclick ="show(0)" id="A1">click</button>
           </th>
-          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
-          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
+          <th>
+            <img id="A2A2" src="">
+            <button type = "button" onclick ="show(1)" id="A2">click</button>
+          </th>
+          <th>
+            <img id="A3A3" src="">
+            <button type = "button" onclick ="show(2)" id="A3">click</button>
+          </th>
         </tr>
         <tr>
-          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
-          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
-          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
+            <th>
+                <img id="B1B1" src="">
+                <button type = "button" onclick ="show(3)" id="B1">click</button>
+            </th>
+            <th>
+                <img id="B2B2" src="">
+                <button type = "button" onclick ="show(4)" id="B2">click</button>
+            </th>
+            <th>
+                <img id="B3B3" src="">
+                <button type = "button" onclick ="show(5)" id="B3">click</button>
+            </th>
         </tr>
         <tr>
-          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
-          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
-          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
+            <th>
+                <img id="C1C1" src="">
+                <button type = "button" onclick ="show(6)" id="C1">click</button>
+            </th>
+            <th>
+                <img id="C2C2" src="">
+                <button type = "button" onclick ="show(7)" id="C2">click</button>
+            </th>
+            <th>
+                <img id="C3C3" src="">
+                <button type = "button" onclick ="show(8)" id="C3">click</button>
+            </th>
         </tr>
     </table>
 
@@ -40,22 +63,28 @@
 
 </div>
     <script>
-        const buttonID = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"];
+        const buttonID = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"]; /*button and img id has to be totally different.*/
+        const imageID = ["A1A1","A2A2","A3A3","B1B1","B2B2","B3B3","C1C1","C2C2","C3C3"];
 
         function show(n){
-            let image = document.getElementById("coc");
-            coc.src = "{{url_for('static', filename= 'Circle.png')}}"
-            coc.width = 50
-            coc.height = 50
             
-            document.getElementById(buttonID[n]).style.display = "none";/*remove button from web*/
+            let image = document.getElementById(imageID[n]);
+            
 
-            const index =buttonID.indexOf(buttonID[n]); /*remove element from array*/
-            if (index > -1){
-                buttonID.splice(index, 1);
-            }
+            image.src = "{{url_for('static', filename= 'images/Circle.png')}}" /*the head cant be imageID[n]!! stucks about 5hrs*/
+            image.width = 50;
+            image.height = 50;
             
+
+            document.getElementById(buttonID[n]).style.display = "none";/*remove button from web*/
         }
+            /*const index =buttonID.indexOf(buttonID[n]); /*remove element from array*/
+            /*if (index > -1){
+                buttonID.splice(index, 1);
+            }*/
+
+            /*document.getElementById(buttonID[Math.random()*buttonID.length]).style.display = "none";*/
+        
     </script>
    
 

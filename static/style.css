@@ -6,8 +6,15 @@ table, th, td {
   table.center {
     margin-left: auto; 
     margin-right: auto;
+    width: 30%;
+    height: 200px;
   }
 
-h1{
+p{
     color: red;
+}
+
+a{
+    text-align: center;
+    font-size: 30px;
 }

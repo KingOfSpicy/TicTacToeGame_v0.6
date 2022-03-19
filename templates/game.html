@@ -68,6 +68,7 @@
 
         function show(n){
             
+
             let image = document.getElementById(imageID[n]);
             
 
@@ -77,15 +78,69 @@
             
 
             document.getElementById(buttonID[n]).style.display = "none";/*remove button from web*/
+
+            /*Remove the id*/
+            //const Bindex =buttonID.indexOf(buttonID[n]); /*remove element from array*/
+            //if (Bindex > -1){
+                //.splice(Bindex, 1);
+            //}
+            //const Iindex =buttonID.indexOf(imageID[n]); /*remove element from array*/
+            //if (Iindex > -1){
+                //imageID.splice(Iindex, 1);
+            //}
+            
+            /*AI random place*/
+            var Rad = Math.floor(Math.random()*imageID.length)/*floor method remove the dot to make integer.*/
+
+            let image2 = document.getElementById(imageID[Rad]);
+            image2.src = "{{url_for('static', filename= 'images/Cross.png')}}" /*the head cant be imageID[n]!! stucks about 5hrs*/
+            image2.width = 50;
+            image2.height = 50;
+
+            document.getElementById(buttonID[Rad]).style.display = "none";/*remove button from web*/
+
+            /*remove the random id*/
+            //const Bindex2 =buttonID.indexOf(buttonID[Rad]); /*remove element from array*/
+            //if (Bindex2 > -1){
+                //buttonID.splice(Bindex2, 1);
+            //}
+            //const Iindex2 =buttonID.indexOf(imageID[Rad]); /*remove element from array*/
+            //if (Iindex2 > -1){
+                //imageID.splice(Iindex2, 1);
+            //}
+
+
         }
+    </script>
+   
+
+{% endblock %}
+
+            <!--/*const index =buttonID.indexOf(buttonID[n]); /*remove element from array*/
+            /*if (index > -1){
+                buttonID.splice(index, 1);
+            }
+            /*const index =buttonID.indexOf(imageID[n]); /*remove element from array*/
+            /*if (index > -1){
+                imageID.splice(index, 1);
+            /*}
+
+
+            let image = document.getElementById(Math.random()*imageID.length);
+
+            image.src = "{{url_for('static', filename= 'images/Cross.png')}}" /*the head cant be imageID[n]!! stucks about 5hrs*/
+            /*image.width = 50;
+            image.height = 50;
+
+
+            document.getElementById(buttonID[Math.random()*buttonID.length]).style.display = "none";*/
+
+
+        
             /*const index =buttonID.indexOf(buttonID[n]); /*remove element from array*/
             /*if (index > -1){
                 buttonID.splice(index, 1);
             }*/
 
-            /*document.getElementById(buttonID[Math.random()*buttonID.length]).style.display = "none";*/
+            /*document.getElementById(buttonID[Math.random()*buttonID.length]).style.display = "none";*/-->
         
-    </script>
-   
-
-{% endblock %}

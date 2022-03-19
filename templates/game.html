@@ -2,11 +2,6 @@
 
 {% block head %}
 <title>TTTgame</title>
-<!--<style>
-    #image{
-        display: none;
-    }
-</style>-->
 {% endblock %}
 
 {% block body %}
@@ -14,56 +9,54 @@
 <div class="content">
     <h1 style="text-align: center;">lets match</h1>
 
-    <div>
-    <table class="center" style="margin-left: auto;margin-right: auto; border: 1px solid black; border-collapse: collapse; width: 30%; height: 200px;">
-        
+    
+    <table class="center">
+        <!-- img id coc stands "circle or cross"-->
         <tr>
-          <th style="border: 1px solid black">
-            <img id="ccl" src="">
-            <button type = "button" onclick ="show()" id="A1">click</button>
-            
-        </th>
-          <th style="border: 1px solid black"><img src="{{url_for('static', filename= 'Cross.png')}}" height=50 width=50></img></th>
-          <th style="border: 1px solid black"><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
+          <th>
+            <img id="coc" src="">
+            <button type = "button" onclick ="show(0)" id="A1">click</button>
+          </th>
+          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
+          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
         </tr>
         <tr>
-          <td style="border: 1px solid black"><img src="{{url_for('static', filename= 'Cross.png')}}" height=50 width=50></img></td>
-          <td style="border: 1px solid black"><img src="{{url_for('static', filename= 'Cross.png')}}" height=50 width=50></img></td>
-          <td style="border: 1px solid black"><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></td>
+          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
+          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
+          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
         </tr>
         <tr>
-          <td style="border: 1px solid black"><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></td>
-          <td style="border: 1px solid black"><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></td>
-          <td style="border: 1px solid black"><img src="{{url_for('static', filename= 'Cross.png')}}" height=50 width=50></img></td>
+          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
+          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
+          <th><img src="{{url_for('static', filename= 'Circle.png')}}" height=50 width=50></img></th>
         </tr>
     </table>
-    <script>
-        function show(){
-            let image = document.getElementById("ccl");
-            ccl.src = "{{url_for('static', filename= 'Circle.png')}}"
-            ccl.width = 50
-            ccl.height = 50
-            
-            document.getElementById('A1').style.display = "none";
-        }
-    </script>
-    </div>
 
-
-    <div style="text-align: center;" style="font-size: 30px;">
         <br>
         <br>
-
         <a href="/">Back to home page.</a>
         <br>
         <br>
-    </div>
 
-
-    <br>
-    <br>
-    <br>
-    
-    
 </div>
+    <script>
+        const buttonID = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"];
+
+        function show(n){
+            let image = document.getElementById("coc");
+            coc.src = "{{url_for('static', filename= 'Circle.png')}}"
+            coc.width = 50
+            coc.height = 50
+            
+            document.getElementById(buttonID[n]).style.display = "none";/*remove button from web*/
+
+            const index =buttonID.indexOf(buttonID[n]); /*remove element from array*/
+            if (index > -1){
+                buttonID.splice(index, 1);
+            }
+            
+        }
+    </script>
+   
+
 {% endblock %}

@@ -57,6 +57,9 @@
 
         <br>
         <br>
+        <p id="RESULT"></p>
+        <br>
+        <br>
         <a href="/">Back to home page.</a>
         <br>
         <br>
@@ -64,53 +67,93 @@
 </div>
     <script>
         const buttonID = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"]; /*button and img id has to be totally different.*/
+
+        const buttonID2 = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"];
+
         const imageID = ["A1A1","A2A2","A3A3","B1B1","B2B2","B3B3","C1C1","C2C2","C3C3"];
+
+        const imageID2 = ["A1A1","A2A2","A3A3","B1B1","B2B2","B3B3","C1C1","C2C2","C3C3"];
+
+        //const checking = [0,1,2,3,4,5,6,7,8]
 
         function show(n){
             
 
-            let image = document.getElementById(imageID[n]);
+            let image = document.getElementById(imageID2[n]);
             
 
             image.src = "{{url_for('static', filename= 'images/Circle.png')}}" /*the head cant be imageID[n]!! stucks about 5hrs*/
             image.width = 50;
             image.height = 50;
             
+            //var c = checking.indexOf(n);
 
-            document.getElementById(buttonID[n]).style.display = "none";/*remove button from web*/
+            //if (c !== -1) {
+                //checking[c] = true;
+            //}
+            document.getElementById(buttonID2[n]).style.display = "none";/*remove button from web*/
 
             /*Remove the id*/
-            //const Bindex =buttonID.indexOf(buttonID[n]); /*remove element from array*/
-            //if (Bindex > -1){
-                //.splice(Bindex, 1);
-            //}
-            //const Iindex =buttonID.indexOf(imageID[n]); /*remove element from array*/
-            //if (Iindex > -1){
-                //imageID.splice(Iindex, 1);
-            //}
+
+            //if(buttonID.length != 0 && imageID.length != 0){
+            const Bindex =buttonID.indexOf(buttonID[n]); /*remove element from array*/
+            if (Bindex > -1){/*if the element exist.*/
+                buttonID.splice(Bindex, 1);
+            }
+            const Iindex =imageID.indexOf(imageID[n]); /*remove element from array*/
+            if (Iindex > -1){
+                imageID.splice(Iindex, 1);
+            }
+                /*AI random place*/
+            var Rad = Math.floor(Math.random()*imageID.length);/*floor method remove the dot to make integer.*/
             
-            /*AI random place*/
-            var Rad = Math.floor(Math.random()*imageID.length)/*floor method remove the dot to make integer.*/
 
             let image2 = document.getElementById(imageID[Rad]);
             image2.src = "{{url_for('static', filename= 'images/Cross.png')}}" /*the head cant be imageID[n]!! stucks about 5hrs*/
             image2.width = 50;
             image2.height = 50;
 
+
+            //var d = imageID[Rad]; //find the element content in deleted array.
+            //var e = imageID2.indexOf(d); //find if exist in origin array(should be yes)
+
+            //if (e !== -1) {
+                //checking[e] = false;
+            //}
+
+            
+                /*remove button again*/
+
             document.getElementById(buttonID[Rad]).style.display = "none";/*remove button from web*/
 
-            /*remove the random id*/
-            //const Bindex2 =buttonID.indexOf(buttonID[Rad]); /*remove element from array*/
-            //if (Bindex2 > -1){
-                //buttonID.splice(Bindex2, 1);
-            //}
-            //const Iindex2 =buttonID.indexOf(imageID[Rad]); /*remove element from array*/
-            //if (Iindex2 > -1){
-                //imageID.splice(Iindex2, 1);
-            //}
-
+                /*remove the random id again*/
+            const Bindex2 =buttonID.indexOf(buttonID[Rad]); /*remove element from array*/
+            if (Bindex2 > -1){
+                buttonID.splice(Bindex2, 1);
+            }
+            const Iindex2 =imageID.indexOf(imageID[Rad]); /*remove element from array*/
+            if (Iindex2 > -1){
+                imageID.splice(Iindex2, 1);
+            }
+            
 
         }
+
+        //function whosWinner() {
+            //var a ="{{url_for('static', filename= 'images/Circle.png')}}";
+            //var b ="{{url_for('static', filename= 'images/Cross.png')}}";
+            //while(true){
+                //if(checking[0]== true && checking[1]== true && checking[2]== true){
+                    //return "You won!";
+                    //break;
+                //}
+                
+            //}
+            //return "nobody win yet!"
+        //}
+        //document.getElementById("RESULT").innerHTML = whosWinner();
+
+
     </script>
    
 

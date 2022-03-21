@@ -1,4 +1,4 @@
-table, th, td {
+  th, td {
     border: 1px solid black;
     border-collapse: collapse;
   }
@@ -11,6 +11,7 @@ table, th, td {
   }
 
 p{
+    text-align: center;
     color: red;
 }
 

@@ -8,8 +8,13 @@ def home():
         return render_template('game.html')
 
     return render_template('home.html')
-    
-    
+
+@ttt.route("/home" ,methods = ['GET', 'POST'])
+def home2():
+    if request.method == 'POST':
+        return render_template('game.html')
+
+    return render_template('home.html')
 
 @ttt.route("/game")
 def game():

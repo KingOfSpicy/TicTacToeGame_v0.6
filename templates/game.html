@@ -60,7 +60,7 @@
         <p id="RESULT"></p>
         <br>
         <br>
-        <a href="/">Back to home page.</a>
+        <a href="/" style="text-align: center;">Back to home page.</a>
         <br>
         <br>
 
@@ -68,13 +68,13 @@
     <script>
         const buttonID = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"]; /*button and img id has to be totally different.*/
 
-        const buttonID2 = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"];
+        const buttonID2 = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"]; /*this array would not change any element to locate the original block.*/
 
         const imageID = ["A1A1","A2A2","A3A3","B1B1","B2B2","B3B3","C1C1","C2C2","C3C3"];
 
         const imageID2 = ["A1A1","A2A2","A3A3","B1B1","B2B2","B3B3","C1C1","C2C2","C3C3"];
 
-        //const checking = [0,1,2,3,4,5,6,7,8]
+        const checking = [0,1,2,3,4,5,6,7,8] /*for detecting win or lose purpose.*/
 
         function show(n){
             
@@ -86,13 +86,14 @@
             image.width = 50;
             image.height = 50;
             
-            //var c = checking.indexOf(n);
+            
 
-            //if (c !== -1) {
-                //checking[c] = true;
-            //}
             document.getElementById(buttonID2[n]).style.display = "none";/*remove button from web*/
 
+            var ch = checking.indexOf(n);
+            if (ch !== -1) {
+                checking[ch] = "circle";
+            }
             /*Remove the id*/
 
             //if(buttonID.length != 0 && imageID.length != 0){
@@ -107,26 +108,23 @@
                 /*AI random place*/
             var Rad = Math.floor(Math.random()*imageID.length);/*floor method remove the dot to make integer.*/
             
+            var dh = imageID[Rad]; //find the element content in deleted array.
+            var eh = imageID2.indexOf(dh); //find if exist in origin array(should be yes)
 
+            if (eh !== -1) {
+                checking[eh] = "cross";
+            }
+
+            //if(checking[Rad] !== "circle" && checking[Rad] !== "cross"){
             let image2 = document.getElementById(imageID[Rad]);
             image2.src = "{{url_for('static', filename= 'images/Cross.png')}}" /*the head cant be imageID[n]!! stucks about 5hrs*/
             image2.width = 50;
             image2.height = 50;
 
-
-            //var d = imageID[Rad]; //find the element content in deleted array.
-            //var e = imageID2.indexOf(d); //find if exist in origin array(should be yes)
-
-            //if (e !== -1) {
-                //checking[e] = false;
-            //}
-
-            
-                /*remove button again*/
-
+            /*remove button again*/
             document.getElementById(buttonID[Rad]).style.display = "none";/*remove button from web*/
 
-                /*remove the random id again*/
+            /*remove the random id again*/
             const Bindex2 =buttonID.indexOf(buttonID[Rad]); /*remove element from array*/
             if (Bindex2 > -1){
                 buttonID.splice(Bindex2, 1);
@@ -136,22 +134,41 @@
                 imageID.splice(Iindex2, 1);
             }
             
-
         }
 
-        //function whosWinner() {
+        function whosWinner() {
             //var a ="{{url_for('static', filename= 'images/Circle.png')}}";
             //var b ="{{url_for('static', filename= 'images/Cross.png')}}";
             //while(true){
-                //if(checking[0]== true && checking[1]== true && checking[2]== true){
+                //(checking[0]== "circle" && checking[1]== "circle" && checking[2]== "circle"){
+                    //return "You won!";
+                    //break;
+                //}else if(checking[0]== "circle" && checking[3]== "circle" && checking[6]== "circle"){
+                    //return "You won!";
+                    //break;
+                //}else if(checking[0]== "circle" && checking[4]== "circle" && checking[8]== "circle"){
+                    //return "You won!";
+                    //break;
+                //}else if(checking[1]== "circle" && checking[4]== "circle" && checking[7]== "circle"){
+                    //return "You won!";
+                    //break;
+                //}else if(checking[2]== "circle" && checking[5]== "circle" && checking[8]== "circle"){
+                    //return "You won!";
+                    //break;
+                //}else if(checking[2]== "circle" && checking[4]== "circle" && checking[6]== "circle"){
+                    //return "You won!";
+                    //break;
+                //}else if(checking[3]== "circle" && checking[4]== "circle" && checking[5]== "circle"){
+                    //return "You won!";
+                    //break;
+                //}else if(checking[6]== "circle" && checking[7]== "circle" && checking[8]== "circle"){
                     //return "You won!";
                     //break;
                 //}
-                
             //}
-            //return "nobody win yet!"
-        //}
-        //document.getElementById("RESULT").innerHTML = whosWinner();
+            return "nobody win yet!";
+                }
+        document.getElementById("RESULT").innerHTML = whosWinner();
 
 
     </script>
